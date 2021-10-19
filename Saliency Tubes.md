@@ -10,32 +10,32 @@
 
 ### 项目效果展示
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/bowling.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/bowling.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/cliff_diving.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/cliff_diving.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/opening_door.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/opening_door.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/opening_drawer.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/opening_drawer.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/rafting.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/rafting.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
 <div align=center>
-<img src="http://striveyadong.com/wp-content/uploads/2021/10/washing.gif" width="50%" height="50%" />
+<img src="http://striveyadong.com/wp-content/uploads/2021/10/washing.gif" width="20%" height="20%" />
 </div>
 <div STYLE="page-break-after: always;"></div>
 
