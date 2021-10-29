@@ -1,5 +1,5 @@
 # My-CV-journey
-介绍最近阅读一些CV方向论文
+介绍最近阅读一些CV方向论文,github的markdown显示latex有问题欢迎光临我的博客[亚东的博客](http://striveyadong.com/)
 
 ## 动作识别
 
