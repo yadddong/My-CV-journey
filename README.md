@@ -5,15 +5,27 @@
 
 | Model | paper | code | year | Reading time |
 | ------ | ------ | ------ | ------ | ------ |
-| two-stream | [link]() | [link]() | 2014 | 2021.9.17- |
+| two-stream | [link]() | [link]() | 2014 | 2021.9.17 |
 
 
 ## 网络架构
 
 | Model | paper | code | year | Reading time |
 | ------ | ------ | ------ | ------ | ------ |
-| resnet | [link]() | [link]() | 2014 | 2014 |
+| resnet | [link](https://projet.liris.cnrs.fr/imagine/pub/proceedings/ECCV-2014/papers/8693/86930596.pdf) | None | 2014 | 2021.10.29 |
 
+
+## 行为预测
+
+| Model | paper | code | year | Reading time |
+| ------ | ------ | ------ | ------ | ------ |
+| MTSSVM | [link](https://projet.liris.cnrs.fr/imagine/pub/proceedings/ECCV-2014/papers/8693/86930596.pdf) | None | 2014 | 2021.10.29 |
+
+## 博客列表
+
+| Name | Link | Time |
+| ------ | ------ | ------ | ------ | ------ |
+| 聊聊VAE | [link](http://striveyadong.com/?p=481) |  2021.10.28 |
 
 代码引用于如下项目,感谢开源:
 <br/>
