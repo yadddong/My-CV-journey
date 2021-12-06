@@ -14,6 +14,7 @@
 - [具体方法介绍](#具体方法介绍)
   - [粗略分类](#粗略分类)
   - [Direct Pixel Synthesis](#direct-pixel-synthesis)
+  - [Using Explicit Transformations](#using-explicit-transformations)
 
 # A Review on Deep Learning Techniques for Video Prediction
 
@@ -102,11 +103,11 @@ Most of the existing deep learning-based models in theliterature are determinist
 
 7.  The Pose Knows: Video Forecasting by Generating Pose Futures(2017.4-41)
    
-   视频预测中的当前方法尝试直接在像素空间中直接生成视频（GANS）或变形Autiachoders（VAES）。但是，由于这些方法尝试立即模拟所有结构和场景动态，因此在不约束的设置中，它们通常会产生未解释的结果。我们的洞察力是以更高级别的抽象模拟预测问题。具体而言，我们利用人类的姿势探测器作为自由的监督来源，并将视频预测问题分为两个离散的步骤。首先，我们明确地模拟了场景中的活跃物体的高级结构---人类 - 并使用VAE模拟姿势空间中可能的未来运动。然后，我们使用将未来的姿势作为条件信息生成给GaN来预测像素空间中的视频的未来帧。通过使用构成的结构化空间作为中间代表性，我们可以避免GAN直接生成视频像素的问题。我们通过定量和定性评估表明我们的方法优于最先进的视频预测方法。
+    视频预测中的当前方法尝试直接在像素空间中直接生成视频（GANS）或变形Autiachoders（VAES）。但是，由于这些方法尝试立即模拟所有结构和场景动态，因此在不约束的设置中，它们通常会产生未解释的结果。我们的洞察力是以更高级别的抽象模拟预测问题。具体而言，我们利用人类的姿势探测器作为自由的监督来源，并将视频预测问题分为两个离散的步骤。首先，我们明确地模拟了场景中的活跃物体的高级结构---人类 - 并使用VAE模拟姿势空间中可能的未来运动。然后，我们使用将未来的姿势作为条件信息生成给GaN来预测像素空间中的视频的未来帧。通过使用构成的结构化空间作为中间代表性，我们可以避免GAN直接生成视频像素的问题。我们通过定量和定性评估表明我们的方法优于最先进的视频预测方法。
 
 8.  Dual Motion GAN for Future-Flow Embedded Video Prediction(2017.8-2)
    
-   视频中未来的帧预测是无监督视频表示学习的有希望的大道。通过基于视频中的外观和运动动态，由前帧的固有像素流动自然产生视频帧。然而，现有方法侧重于直接幻觉的像素值，导致模糊的预测。在本文中，我们开发了一种双重运动生成的对抗网（GaN）架构，其学会明确地实施未来帧预测，以通过双学习机制与视频中的像素 - 明智的流程一致。原始未来帧预测和双未来流预测形成闭环，以彼此产生信息的信息，以获得更好的视频预测。为了使合成的未来框架和流动与现实无法区分，提出了一种双对抗训练方法，以确保未来流预测能够帮助推断逼真的未来框架，而未来帧预测依次导致现实的光学流动。我们的双运动GaN还通过新的概率运动编码器处理不同像素位置的自然运动不确定性，这是基于变形式自动化器。广泛的实验表明，所提出的双运动GaN显着优于综合新视频帧和预测未来流动的最先进方法。我们的模型概括了各种视觉场景，并在无监督的视频表示学习中显示出优越性。
+    视频中未来的帧预测是无监督视频表示学习的有希望的大道。通过基于视频中的外观和运动动态，由前帧的固有像素流动自然产生视频帧。然而，现有方法侧重于直接幻觉的像素值，导致模糊的预测。在本文中，我们开发了一种双重运动生成的对抗网（GaN）架构，其学会明确地实施未来帧预测，以通过双学习机制与视频中的像素 - 明智的流程一致。原始未来帧预测和双未来流预测形成闭环，以彼此产生信息的信息，以获得更好的视频预测。为了使合成的未来框架和流动与现实无法区分，提出了一种双对抗训练方法，以确保未来流预测能够帮助推断逼真的未来框架，而未来帧预测依次导致现实的光学流动。我们的双运动GaN还通过新的概率运动编码器处理不同像素位置的自然运动不确定性，这是基于变形式自动化器。广泛的实验表明，所提出的双运动GaN显着优于综合新视频帧和预测未来流动的最先进方法。我们的模型概括了各种视觉场景，并在无监督的视频表示学习中显示出优越性。
 
 9.  A Novel Adversarial Inference Framework for Video Prediction with Action Control(2019.10-4)
     
@@ -252,7 +253,69 @@ Most of the existing deep learning-based models in theliterature are determinist
    (Enabling state sharingbetween the encoder and decoder, Oliu et al. proposed thefolded Recurrent Neural Network (fRNN), a recurrentAE architecture featuring GRUs that implement a bidirec-tional flow of the information. The model demonstrated astratified representation, which makes the topology moreexplainable, as well as efficient compared to regular AEs interms or memory consumption and computational require-ments)
 
    这项工作引入了双重映射门控复发单位（DGRU），标准GRUS的延伸，其中输入被认为是一种反复状态。添加额外的逻辑门以更新给定输出的输入。堆叠多个这样的层会导致反复间自动编码器：操作员更新输出包括编码器，而更新输入的编码器形成解码器。由于状态在相应的编码器和解码器层之间共享，因此在学习期间分层表示表示：一些信息未传递给下一个层。我们在未来的视频预测上测试我们的模型。此任务的主要挑战包括视频的高度变化，错误的错误和未来帧的非特异性。我们展示只需要对编码或预测应用编码器或解码器。这降低了计算成本并避免在生成多帧时重新编码预测，减轻误差传播。此外，可以从训练的模型中移除层，对每个层的角色欣赏。我们的方法在MMNIST和UCF101上提高了最先进的结果，在KTH上具有竞争力，其中内存使用量减少了2和3倍，而不是最佳均衡的方法。
+   
+(Exploiting 3D convolution应用)
 
+1. Eidetic 3D LSTM: A Model for Video Prediction and Beyond(2019.2-114)
+
+   ( for modeling short-term fea-tures, Wang et al. integrated them into a recurrent net-work demonstrating promising results in both video predic-tion and early activity recognition. While 3D convolutions efficiently preserves local dynamics, RNNs enables long-range video reasoning. The eidetic 3d LSTM (E3d-LSTM)network, represented in Figure 4, features a gated-controlledself-attention module, i.e. eidetic 3D memory, that effectivelymanages historical memory records across multiple timesteps)
+   
+   时尚预测学习，虽然长期以来被认为是一个有前途的自我监督特征学习方法，但很少显示其超越未来的预测的有效性。原因是，对于短期帧依赖和长期高级关系，难以学习良好的代表性。 Wepresent新模型EIDITITIT 3D LSTM（E3D-LSTM），它将3D CONCO-LITS集成到RNN中。封装的3D-CONC使RNNSMotion-Invustn的本地感知器使得存储器单元能够存储更好的短期特征。对于长期的关系，我们通过栅极控制的自我关注模块使目前的记忆状态与其Histori-Cal记录进行交互。我们描述了这种Memory Transition机制，即使在长时间的干扰之后，它也能够在多个时间戳上有效地召回存储的备忘录。我们首先将E3D-LSTM网络用于广泛使用的未来视频预测数据集，实现了最先进的性能。然后，我们表明E3D-LSTMNetwork也在早期活动识别上表现良好，以推断出什么是HAP笔戳，或者在观察有限的视频帧之后会发生什么。在模拟动作和趋势的模型预测中，This task很好地对准。
+   <div align=center>
+   <img src="../images/934fd06c89869c2de135d5a6085640ea54ec0a819afc31766cba32c227d8cd85.png" width="100%" height="100%" />
+   </div>
+
+2. Efficient and Information-Preserving Future Frame Prediction and Beyond(2020.4-10)
+
+   ( Outperforming previous works, Yu et al. proposedthe Conditionally Reversible Network (CrevNet) [154] con-sisting of two modules, an invertible AE and a ReversiblePredictive Model (RPM). While the bijective two-way AEensures no information loss and reduces the memory con-sumption, the RPM extends the reversibility from spatial totemporal domain.)
+
+   应用分辨率保存块是一种常见的做法，可以最大化视频预测中的信息保存，但它们的高记忆消耗极大地限制了其应用方案。我们提出了一种可条件可逆网络的条件可逆网络，该网络使用可逆架构来构建一个自身的双向AutoEncoder及其互补复发预测器。我们的型号在特征提取过程中享有无信息损耗的理论上保证性能，更低的内存消耗和计算效率。我们模型的轻质性质使我们能够在没有记忆瓶颈的情况下纳入3D卷积，增强了模型捕获短期和长期时间依赖性的能力。我们所提出的方法在移动Mnist，Traffic4cast和Kitti数据集上实现最先进的结果。我们进一步展示了通过利用其在基蒂对象检测的学习功能来实现自我监督学习方法的可转换性。我们的竞争结果表明，使用Crevnet作为导向下游任务的生成预培训策略的潜力。
+   
+3. Futuregan: Anticipating the Future Frames of Video Sequences Using Spatio-Temporal 3d Convolutions in Progressively Growing Gans(2019.9-30)
+   
+   (used 3D convolutionaloperations to model the time dimension )
+   
+   我们介绍了一个新的编码器 - 解码器GaN模型，uuewargan，它预测在过去帧序列上调节的视频序列的未来帧。在培训期间，网络仅接收原始像素值作为输入，而不依赖于附加约束或数据集特定条件。为了捕获视频序列的空间和时间组件，所有编码器和解码器模块都使用时空3D卷积。此外，我们利用现有的逐步增长GaN（PGGAN）的概念（PGGAN），以实现高分辨率单个图像的高质量结果。未来语法将该概念扩展到视频预测的复杂任务。我们在三个不同的数据集，搬家，犹太行动和城市景观中进行了实验。我们的结果表明，模型学习的表示，为所有三个数据集有效地将输入序列的信息转换为合理的未来序列。未来泛乐框架的主要优点是，它适用于各种不同的数据集，而无需额外变化，同时实现对视频预测中最先进的竞争态度的稳定结果。重现本文结果的代码在https://github.com/tum-lmf/futuregan上公开可用。
+
+4. ContextVP: Fully Context-Aware Video Prediction(2018.9-96)
+   
+   (Analyzing the previous works, Byeon et al. identifieda lack of spatial-temporal context in the representations,leading to blurry results when it comes to the future uncer-tainty. Although authors addressed this contextual limita-tion with dilated convolutions and multi-scale architectures,the context representation progressively vanishes in long-term predictions. To address this issue, they propose a context-aware model that efficiently aggregates per-pixelcontextual information at each layer and in multiple direc-tions. The core of their proposal is a context-aware layerconsisting of two blocks, one aggregating the informationfrom multiple directions and the other blending them into aunified context )
+   
+   基于卷积网络，经常性网络的视频预测模型及其组合通常导致模糊的预测。我们确定了在文献中未充分研究的不精确预测的重要贡献因素：盲点，即缺乏对所有相关过去信息的访问，以准确预测未来。为了解决这个问题，我们介绍了一种完全上下文感知的体系结构，该体系结构捕获每个像素的整个可用的过去上下文，使用并行多维LSTM单元，并使用混合单元聚合它。我们的模型优于20个复发卷积层的强大基线网络，并在三次具有挑战性的现实世界视频数据集上产生最先进的性能：人类3.6M，CALTECH行人和UCF-101。此外，它的参数比最近提出的型号更少，并且不依赖于深度卷积网络，多尺度架构，背景和前景建模，运动流程学习或对抗性训练。这些结果强调了对过去上下文的完全认识对视频预测至关重要。
+
+**总的来看,从原始像素值中提取强大的表示值，由于像素空间的高维度，这是一种过于复杂的任务。必须在长期地平线上导致预测镜头之间的每像素变异性导致预测值的指数增长**
+
+##  Using Explicit Transformations
+   ![图 2](../images/ed7087a94a6ce085b9a00ad04a0e455f7e6f04a1c35399679dc19d2e13229300.png)  
+   ![图 3](../images/632155349a2fb9d2f0067299ea9f22e410abe4c730c8a02028493b9192904f09.png)  
+
+1. SDC-Net: Video prediction using spatially-displaced convolution(2018.9-76)
+   
+   ( proposed the SpatiallyDisplaced Convolution (SDC) module that synthesizes high-resolution images applying a learned per-pixel motion vec-tor and kernel at a displaced location in the source image.Their 3D CNN model trained on synthetic data and featur-ing the SDC modules, reported promising predictions of ahigh-fidelity)
+
+   我们介绍了一种通过在过去的帧和过去的光学流程上调节高分辨率视频帧预测方法。以前的方法依赖于重采样过去的帧，由学习的未来光流引导，或者在直接生成像素上。基于流量的重新采样不足，因为它无法处理脱锁。生成模型目前导致模糊结果。最近接近通过用预测的内核卷积输入补丁来合成像素。但是，它们的内存要求随内核大小而增加。这里，我们向视频帧预测呈现空间移位卷积（SDC）模块。我们学习每个像素的运动矢量和内核，并通过在源图像中的位移位置应用内核来合成像素，由预测的运动矢量施加。我们的方法继承了基于载体和基于内核的方法的优点，同时改善了它们各自的缺点。我们培训我们的模型在428K未标记的1080P视频游戏框架上。我们的方法产生了最先进的结果，在高清Youtube-8M视频中实现了0.904的SSIM分数，0.918在Caltech PeStrian视频。我们的模型有效地处理了大量运动，并用一致运动合成脆框架。
+
+   ![图 4](../images/a3f1a38cdc2fa7f611c98ec815875f366ef1a86cc2b3945baebec56f80e737ef.png)  
+
+   ![图 5](../images/024d0d4c687a54264b13f11bc9ed837d3ce62c515d3ffbd1acc9766cc163135e.png)  
+
+
+2. Learning to Relate Images(2013.8-128)
+   
+   use multiplicative interactions to extracttransformations from pairs of observations in order to relateimages
+
+   许多视觉任务的基本操作，包括运动理解，立体试作，视觉机器学或不变识别，正在建立图像之间的对应关系或来自其他方式的图像和数据之间。最近，对学习的兴趣越来越兴趣地使用深度学习方法的关系，时尚和双线性变体从数据推断对应关系。这些方法使用像素之间的乘法相互作用或在特征之间表示跨多个图像的相关模式。在本文中，我们审查了最近关于关系特征学习的工作，我们提供了对乘法交互在学习中编码关系的作用的分析。我们还讨论如何将方形池和复杂的单元格模型视为代表乘法交互的方式，从而作为编码关系的方式。
+
+3. Modeling Deep Temporal Dependencies with Recurrent Grammar Cells(2014.12-110)
+   
+   (To the best of our knowledge, thiswas the first attempt to predict future frames in the affinetransform space. Multiple GAEs are stacked to represent ahierarchy of transformations and capture higher-order de-pendencies. From the experiments on predicting frequencymodulated sin-waves, authors stated that standard RNNswere outperformed in terms of accuracy. However, no per-formance comparison was conducted on video)
+
+   我们提出建模时间序列来表示在时间t在时间t + 1处于帧的变换。为此，我们展示了如何通过训练从当前一个和推断的转换来预测来自当前一个和推断的转换的重复网络的转换的双线性模型。我们还展示了如何在经常性金字塔中堆叠多层的播放单元如何代表复杂时间序列的“语法”，并且它可以在各种任务上的预测准确性方面优于标准的经常性神经网络。
+
+
+![图 6](../images/603dad7e8d2c4bec2d3bfd7f6e717457df5751d6c1616cc2ffe0b3d27b5a07f0.png)  
+
+![图 8](../images/711aa2f01e89950f0d934584e80e3ce9ed8404dc14fdc1069ce6a8927b0239ac.png)  
 
 
 
