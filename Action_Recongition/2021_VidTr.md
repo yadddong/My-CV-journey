@@ -38,7 +38,7 @@
 
   介绍方法要素之前先上图:stuck_out_tongue:
   <div align=center>
-     <img src="../images/c57fe1d6cdf7acb127e9f124c66db3855a0f5cc449f90232e65a00f88f1f56d8.png" width="100%" height="100%" />
+     <img src="http://striveyadong.com/wp-content/uploads/2021/12/c57fe1d6cdf7acb127e9f124c66db3855a0f5cc449f90232e65a00f88f1f56d8.png" width="100%" height="100%" />
   </div>
   
   相信有对transformer有一定了解的不难发现很多地方就是基础transformer东西，图片中左边是最原始的video transformer，右边是作者提出的架构，下面着重介绍什么是MSA_t,MSA_s,ds
@@ -53,19 +53,19 @@
   所以针对于MSA_t公式如下
 
   <div align=center>
-     <img src="../images/6c2a3a8f9753eaa27880128e88d5703fe758225a17a948693d5de69c505ca4b4.png" width="100%" height="100%" />
+     <img src="http://striveyadong.com/wp-content/uploads/2021/12/6c2a3a8f9753eaa27880128e88d5703fe758225a17a948693d5de69c505ca4b4.png" width="100%" height="100%" />
   </div>
 
   可以看出针对于t的注意力，只是常规注意力操作下只针对于S的第二个维度即T维度进行操作，计算公式相对简单。其中
 
   <div align=center>
-     <img src="../images/98ebc58ed4b3047936a74f034bc4dee693bb99d34962540eb8c68a58a12dc459.png" width="100%" height="100%" />
+     <img src="http://striveyadong.com/wp-content/uploads/2021/12/98ebc58ed4b3047936a74f034bc4dee693bb99d34962540eb8c68a58a12dc459.png" width="100%" height="100%" />
   </div>
 
   之后的空间注意力有：
 
   <div align=center>
-     <img src="../images/2e9058e0cf2e4a0bb1a906750f2e02a72d77339bdfaa0b282283d95259b6b6e3.png" width="100%" height="100%" />
+     <img src="http://striveyadong.com/wp-content/uploads/2021/12/2e9058e0cf2e4a0bb1a906750f2e02a72d77339bdfaa0b282283d95259b6b6e3.png" width="100%" height="100%" />
   </div>
 
 #### DS操作
@@ -73,7 +73,7 @@
   关于作者为进一步降低计算效率，提出的topk—std策略，策略依据主要是在提出的网络中，时间注意力高度激活在一个小的当剪辑提供信息时的一组时间特征，当剪辑几乎没有附加语义信息时，注意力在剪辑的长度上均匀分布。基于这种直觉提出了一个基于 topK 的池化(topK std pooling) 按标准对实例进行排序注意力矩阵中每一行的偏差。公式如下：
 
   <div align=center>
-     <img src="../images/04e11eb8a890d3fe6f5577a692413dd2d1f3af05117d74dcf53706336308a95a.png" width="100%" height="100%" />
+     <img src="http://striveyadong.com/wp-content/uploads/2021/12/04e11eb8a890d3fe6f5577a692413dd2d1f3af05117d74dcf53706336308a95a.png" width="100%" height="100%" />
   </div>
 
   简单来说就是我只选择注意力最集中的地方
@@ -83,25 +83,25 @@
 在 Kinetics 400 数据集上，对比实验结果如下，对比当前基于卷积的SOTA综合优势十分明显
 
 <div align=center>
-   <img src="../images/ecfbdff0f9cfe0467fae0cd1bf222df9d9bdb614782f24785a34d22fa843eb8c.png" width="100%" height="100%" />
+   <img src="http://striveyadong.com/wp-content/uploads/2021/12/ecfbdff0f9cfe0467fae0cd1bf222df9d9bdb614782f24785a34d22fa843eb8c.png" width="100%" height="100%" />
 </div>
 
 加了DS操作后轻量级架构准确率对比如下
 
 <div align=center>
-   <img src="../images/24ca19b6fe83ffce40bdacba8fc868cf403e10383c4f430e242ce63dd4983809.png" width="100%" height="100%" />
+   <img src="http://striveyadong.com/wp-content/uploads/2021/12/24ca19b6fe83ffce40bdacba8fc868cf403e10383c4f430e242ce63dd4983809.png" width="100%" height="100%" />
 </div>
 
 对数据集中类别准确率差距有如下，符合预期VidTr在长时间动作分类具备优势，而基于CNN架构的处理短动作优势大：
 
 <div align=center>
-   <img src="../images/308f32b7e4e297eae7b465b38298b5023348e5c1e05c4b14011277c00401f261.png" width="100%" height="100%" />
+   <img src="http://striveyadong.com/wp-content/uploads/2021/12/308f32b7e4e297eae7b465b38298b5023348e5c1e05c4b14011277c00401f261.png" width="100%" height="100%" />
 </div>
 
 作者同时对结果进行一系列可视化结果，如下
 
 <div align=center>
-   <img src="../images/2a2af02e705e66bb53bb49567ab59864ee9f4f9d106a5571963535e1109dd005.png" width="100%" height="100%" />
+   <img src="http://striveyadong.com/wp-content/uploads/2021/12/2a2af02e705e66bb53bb49567ab59864ee9f4f9d106a5571963535e1109dd005.png" width="100%" height="100%" />
 </div>
 
 从可视化结果可以看出，如预期，DS操作可以去除掉重复的信息，VidTr在处理长时动作有很大优势
